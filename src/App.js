@@ -1,13 +1,14 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 import { useState } from 'react';
-
+import ColorPicker from './ColorPicker';
+import FakeDiv from './FakeDiv';
 function App() {
 
-  const[red, setRed] = useState(23)
-  const[green, setGreen] = useState(10)
-  const[blue, setBlue] = useState(9)
+  const[red, setRed] = useState(25)
+  const[green, setGreen] = useState(255)
+  const[blue, setBlue] = useState(25)
 
   const appStyle = {
     backgroundColor: `rgb(${red}, ${green}, ${blue})`
@@ -15,45 +16,36 @@ function App() {
 
 
   return (
-    <div className="fakey-body" style={appStyle}> 
-      R: <input type="range" min="0" max="255"
 
-      value={red}
-      onChange={(event) => {
-        //console.log(event.target.value);
-        setRed(event.target.value)
-      }}
-      
+    <FakeDiv 
+      className="fakey-body" 
+      style={appStyle}> 
+
+      <ColorPicker
+        label="Red:   "
+        color={red}
+        setColor={setRed}
       />
-      {red}
       <br></br>
 
 
-      G: <input type="range" min="0" max="255"
-
-        value={green}
-        onChange={(event) => {
-          //console.log(event.target.value);
-          setGreen(event.target.value)
-        }}
-
+      <ColorPicker
+        label="Green:"
+        color={green}
+        setColor={setGreen}
         />
-        {green}
 
         <br></br>
 
-      B: <input type="range" min="0" max="255"
+        <ColorPicker
+          label="Blue:  "
+          color={blue}
+          setColor={setBlue}
+        />
 
-          value={blue}
-          onChange={(event) => {
-            //console.log(event.target.value);
-            setBlue(event.target.value)
-          }}
-
-          />
-          {blue}
+        <br></br>
     
-    </div>
+    </FakeDiv>
   );
 }
 
